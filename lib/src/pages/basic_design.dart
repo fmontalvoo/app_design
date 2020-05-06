@@ -57,8 +57,7 @@ class BasicDesign extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         _button(Icons.call, 'Llamar'),
-        _button(Icons.near_me, 'Ruta',
-            () => Navigator.pushNamed(context, 'scroll')),
+        _button(Icons.near_me, 'Ruta', ()=>Navigator.pushNamed(context, 'scroll')),
         _button(Icons.share, 'Compartir'),
       ],
     );

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:app_design/src/pages/basic_design.dart';
 import 'package:app_design/src/pages/scroll_page.dart';
-import 'package:app_design/src/menu_page.dart';
+import 'package:app_design/src/pages/menu_page.dart';
 
 void main() => runApp(MyApp());
 
