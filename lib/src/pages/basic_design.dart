@@ -6,16 +6,14 @@ class BasicDesign extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: SafeArea(
-            child: Column(
-          children: <Widget>[
-            _imageSection(),
-            _titleSection(),
-            _buttonSection(),
-            _textSection()
-          ],
-        )),
-      ),
+          child: Column(
+        children: <Widget>[
+          _imageSection(),
+          _titleSection(),
+          _buttonSection(context),
+          _textSection()
+        ],
+      )),
     );
   }
 
@@ -54,12 +52,13 @@ class BasicDesign extends StatelessWidget {
     );
   }
 
-  Widget _buttonSection() {
+  Widget _buttonSection(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         _button(Icons.call, 'Llamar'),
-        _button(Icons.near_me, 'Ruta'),
+        _button(Icons.near_me, 'Ruta',
+            () => Navigator.pushNamed(context, 'scroll')),
         _button(Icons.share, 'Compartir'),
       ],
     );
@@ -80,12 +79,15 @@ class BasicDesign extends StatelessWidget {
     );
   }
 
-  Widget _button(IconData icon, String text) {
-    return Column(
-      children: <Widget>[
-        Icon(icon, size: 40.0, color: Colors.blueAccent),
-        Text(text, style: TextStyle(fontSize: 16.0, color: Colors.blueAccent))
-      ],
+  Widget _button(IconData icon, String text, [Function onTap]) {
+    return GestureDetector(
+      child: Column(
+        children: <Widget>[
+          Icon(icon, size: 40.0, color: Colors.blueAccent),
+          Text(text, style: TextStyle(fontSize: 16.0, color: Colors.blueAccent))
+        ],
+      ),
+      onTap: onTap,
     );
   }
 }

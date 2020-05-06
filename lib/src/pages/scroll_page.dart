@@ -8,20 +8,18 @@ class ScrollPage extends StatelessWidget {
       body: PageView(
         pageSnapping: true,
         scrollDirection: Axis.vertical,
-        children: <Widget>[_pageOne(), _pageTwo()],
+        children: <Widget>[_pageOne(), _pageTwo(context)],
       ),
     );
   }
 
   Widget _pageOne() {
-    return SafeArea(
-      child: Stack(
-        children: <Widget>[_backgroundColor(), _backgroundImage(), _content()],
-      ),
+    return Stack(
+      children: <Widget>[_backgroundColor(), _backgroundImage(), _content()],
     );
   }
 
-  Widget _pageTwo() {
+  Widget _pageTwo(BuildContext context) {
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -36,7 +34,7 @@ class ScrollPage extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
               child: Text('Bienvenido', style: TextStyle(fontSize: 25.0)),
             ),
-            onPressed: () {}),
+            onPressed: () => Navigator.pushNamed(context, 'menu')),
       ),
     );
   }
@@ -61,15 +59,17 @@ class ScrollPage extends StatelessWidget {
   }
 
   Widget _content() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
-      child: Column(
-        children: <Widget>[
-          Text('11º', style: estilo),
-          Text('Miércoles', style: estilo),
-          Expanded(child: Container()),
-          Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 70.0)
-        ],
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20.0),
+        child: Column(
+          children: <Widget>[
+            Text('11º', style: estilo),
+            Text('Miércoles', style: estilo),
+            Expanded(child: Container()),
+            Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 70.0)
+          ],
+        ),
       ),
     );
   }
